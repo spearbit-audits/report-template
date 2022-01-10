@@ -1,0 +1,55 @@
+% An extension of article to include 17pt font size
+\documentclass[14pt]{extarticle}
+
+\usepackage[T1]{fontenc}
+
+
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+% \usepackage[helvet]{sfmath}
+% \everymath={\sf}
+
+\usepackage{parskip}
+
+\usepackage[english]{babel}	
+\usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
+
+ % Math packages
+\usepackage{amsmath,amsfonts,amsthm}
+
+\usepackage[pdftex]{graphicx}	
+
+% For hyphenation of texttt:
+% https://tex.stackexchange.com/questions/299/how-to-get-long-texttt-sections-to-break
+\usepackage[htt]{hyphenat}
+
+% For syntax highlighting
+\usepackage{minted}
+\setminted[]{frame=single,fontsize=\small,samepage=true,breaklines=true}
+% For links
+\usepackage[hyphens]{url}
+\PassOptionsToPackage{hyphens}{url}\usepackage[hidelinks]{hyperref}
+
+% Fixing a pandoc related error
+% https://tex.stackexchange.com/questions/257418/error-tightlist-converting-md-file-into-pdf-using-pandoc
+\def\tightlist{}
+
+\usepackage{longtable}
+
+% Adding breaklines=true to minted's settings seems to produce some errors related to fonts. This is
+% the only fix that worked.
+% https://stackoverflow.com/questions/70075331/pdflatex-file-cmss10-t3-cannot-open-type-1-font-file-for-read
+
+\pdfmapfile{-mpfonts.map}
+
+\begin{document}
+
+\include{title.tex}
+
+\include{summary.tex}
+
+\tableofcontents
+
+\include{report.tex}
+
+\end{document}
