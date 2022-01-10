@@ -1,0 +1,37 @@
+name: Generate PDF report
+on: [push]
+jobs:
+  Generate-PDF:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Install pandocfilters
+        run: pip install pandocfilters
+      - name: Install pandoc
+        run: sudo apt-get install pandoc
+      - name: Generate the LaTeX File
+        run: pandoc --filter pandoc-minted.py --from gfm report.md -o report.tex
+      - name: A hack for generating newpages
+        run: sed -i 's/textbackslash{}clearpage/clearpage/g' report.tex
+      - name: Compile the LaTeX file
+        continue-on-error: true
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: main.tex
+          compiler: pdflatex
+          args: -interaction=nonstopmode -shell-escape
+      - name: Compile the LaTeX file again for references
+        continue-on-error: true
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: main.tex
+          compiler: pdflatex
+          args: -interaction=nonstopmode -shell-escape
+      - name: Uploads the generated pdf
+        uses: actions/upload-artifact@v2
+        with:
+          name: spearbit.pdf
+          path: main.pdf
+      - run: echo "🍏 This job's status is ${{ job.status }}."
