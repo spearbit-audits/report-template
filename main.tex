@@ -26,9 +26,13 @@
 % For syntax highlighting
 \usepackage{minted}
 \setminted[]{frame=single,fontsize=\small,samepage=true,breaklines=true}
+
+\usepackage{xcolor}
+\definecolor{spearbitlink}{HTML}{000066}
+
 % For links
 \usepackage[hyphens]{url}
-\PassOptionsToPackage{hyphens}{url}\usepackage[hidelinks]{hyperref}
+\PassOptionsToPackage{hyphens}{url}\usepackage[hidelinks = true, colorlinks = true, linkcolor = black, urlcolor = spearbitlink]{hyperref}
 
 % Fixing a pandoc related error
 % https://tex.stackexchange.com/questions/257418/error-tightlist-converting-md-file-into-pdf-using-pandoc
