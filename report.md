@@ -17,7 +17,7 @@ The focus of the security review was on the following:
 
 # Findings 
 
-## High Severity
+## Critical Severity
 ### Actual Issue
 
 **Severity**: Low, Gas optimization
@@ -34,6 +34,8 @@ contract Test {
 **Project**: Fixed in [PR #1](Https://github.com/actuallink).
 
 **Spearbit**: Resolved.
+
+## High Severity
 
 ## Medium Severity
 
