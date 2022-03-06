@@ -46,6 +46,13 @@
 
 \pdfmapfile{-mpfonts.map}
 
+% Workaround for red boxes around @-signs in minted environments
+% https://tex.stackexchange.com/questions/343494/minted-red-box-around-greek-characters
+\makeatletter
+\AtBeginEnvironment{minted}{\dontdofcolorbox}
+\def\dontdofcolorbox{\renewcommand\fcolorbox[4][]{##4}}
+\makeatother
+
 \begin{document}
 
 \include{title.tex}
