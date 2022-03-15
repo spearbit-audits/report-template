@@ -17,6 +17,8 @@ The focus of the security review was on the following:
 
 # Findings 
 
+## Critical Risk
+
 ## High Risk
 ### Issue title (Only first word should be capitalized; titles should never end with punctuation)
 
