@@ -32,6 +32,6 @@ jobs:
       - name: Uploads the generated pdf
         uses: actions/upload-artifact@v2
         with:
-          name: spearbit.pdf
+          name: spearbit-${{ github.event.repository.name }}-${{ github.sha }}.pdf
           path: main.pdf
       - run: echo "🍏 This job's status is ${{ job.status }}."
