@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 ''' A pandoc filter that has the LaTeX writer use minted for typesetting code.
 
 Usage:
